@@ -28,8 +28,11 @@ if __name__ == "__main__":
     nm_cor = input('Digite a cor: ')
 
     kms = float(input('Digite com quantos Kms: '))
+    tanque = float(input("Digite a gasolina do tanque: "))
+    consumo = float(input("Digite o consumo de gasolina: "))
+    motor = False
 
-    carro1 = Carro(nm_modelo, nm_marca, nm_cor, kms, motor = False)
+    carro1 = Carro(nm_modelo, nm_marca, nm_cor, kms, motor, tanque, consumo)
 
     print('Cadastre um carro')
     nm_modelo = input('Digite o modelo: ')
@@ -37,17 +40,20 @@ if __name__ == "__main__":
     nm_cor = input('Digite a cor: ')
 
     kms = float(input('Digite com quantos Kms: '))
+    tanque = float(input("Digite a gasolina do tanque: "))
+    consumo = float(input("Digite o consumo de gasolina: "))
+    motor = False
 
-    carro2 = Carro(nm_modelo, nm_marca, nm_cor, kms, motor = False)
+    carro2 = Carro(nm_modelo, nm_marca, nm_cor, kms, motor, tanque, consumo)
 
     '''
     Controlando o carro até ele atingir 10000 Km
     '''
-    while carro1.odometro < 600 and carro2.odometro < 600:
+    while carro1.odometro < 300 and carro2.odometro < 300 and (carro1.tanque > 0 or carro2.tanque > 0):
         try:
             op = 0
             while op not in (1, 2):
-                op = int(input("escolha um carro para operar: "))
+                op = int(input("Escolha um carro para operar [1-2]: "))
             if(op == 1):
                 operar_carro(carro1)
             else:
@@ -57,6 +63,8 @@ if __name__ == "__main__":
             print(e)
 
     carro1.desligar()
+    carro2.desligar()
     print(carro1)
+    print(carro2)
     print('Parar para trocar óleo!!!')
 
